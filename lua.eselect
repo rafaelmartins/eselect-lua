@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Id: $
 
+# Based on vi.eselect
+
 DESCRIPTION="Manage Lua symlinks"
 MAINTAINER="rafaelmartins@gentoo.org"
 VERSION="@VERSION@"
@@ -105,7 +107,7 @@ set_symlink() {
 			die -q "You didn't give me a provider name"
 		elif [[ -n "${2}" ]]; then
 			die -q "Too many parameters"
-		elif [[ -L "${ROOT}/usr/bin/vi" ]]; then
+		elif [[ -L "${ROOT}"/usr/bin/lua ]]; then
 			if ! remove_symlink; then
 				die -q "Can't remove existing provider"
 			elif ! set_symlink "${1}" ; then
