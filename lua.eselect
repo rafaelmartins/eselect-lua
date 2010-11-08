@@ -13,11 +13,10 @@ VERSION="@VERSION@"
 find_targets() {
 	local bin
 	for bin in \
-			"${ROOT}"/usr/bin/lua-5 \
-			"${ROOT}"/usr/bin/luajit-1 \
-			"${ROOT}"/usr/bin/luajit-2
+			"${ROOT}"/usr/bin/lua-* \
+			"${ROOT}"/usr/bin/luajit-* 
 		do
-		if [[ -f "${bin}" ]] ; then
+		if [[ -f "${bin}" ]]; then
 			echo $(basename "${bin}")
 		fi
 	done
@@ -35,8 +34,8 @@ set_symlink() {
 	fi
 	if [[ -f "${ROOT}/usr/bin/${target}" ]]; then
 		remove_symlink
-		ln -s "${target}" "${ROOT}/usr/bin/lua" \
-			|| die "Couldn't set ${target} /usr/bin/lua	symlink"
+		ln -s "${target}" "${ROOT}"/usr/bin/lua \
+			|| die "Couldn't set ${target} /usr/bin/lua symlink"
 	else
 		die -q "Target \"${1}\" isn't valid."
 	fi
