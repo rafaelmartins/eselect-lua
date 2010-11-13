@@ -13,8 +13,8 @@ VERSION="@VERSION@"
 find_targets() {
 	local bin
 	for bin in \
-			"${ROOT}"/usr/bin/lua-* \
-			"${ROOT}"/usr/bin/luajit-* 
+			"${ROOT}"/usr/bin/lua5* \
+			"${ROOT}"/usr/bin/luajit{1,2}* 
 		do
 		if [[ -f "${bin}" ]]; then
 			echo $(basename "${bin}")
